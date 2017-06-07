@@ -1,8 +1,8 @@
-# ATTENTION, this project is on a beta version, there is a lot of bugs and problem, if you want to help the project use this on a lab not in yout real environment.
-# NO, there's no https implemented yet, it will come on the next upgrade
+# ATTENTION, this project is on a beta version, there's a lot of bugs and problem, if you want to help the project use this on a lab not in yout real environment.
+# NO, there's not https implemented yet, it will come on the next upgrade
 
 # Heimdall
-It's a tool to manage vulnerables packages in your *nix server, in a centralized way
+It's a tool to manage vulnerables packages in your *nix servers, in a centralized way
 
 # How to install
 <pre>
