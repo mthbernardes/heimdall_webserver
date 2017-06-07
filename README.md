@@ -2,6 +2,7 @@
 It's a tool to manage vulnerables packages in your *nix server, in a centralized way
 
 # How to install
+<pre>
 git clone https://github.com/mthbernardes/heimdall_webserver.git
 cd heimdall_webserver
 chmod +x install.sh
@@ -9,17 +10,16 @@ chmod +x install.sh
 python manage.py runserver 0.0.0.0:1337
 The default credentials are 
 heimdall:heimdall (CHANGE THAT)
+</pre>
 
 # How it works
+<pre>
 1. Install and configure the Heimdall web platform(heimdall_webserver) on a server where you will manage all your other clients(servers)
-
 2. Install and configure the Heimdall agent on your clients(<a href="https://github.com/mthbernardes/heimdall_agent">heimdall_agent</a>)
-
 3. The client get all packages installed and consult on <a href="https://vulners.com">vulners.com</a>, to find wich package is vulnerable.
-
 4. The client report the vulnerables packages to heimdall_webserver
-
 5. Now you can upgrade the packages in all your server using just the Heimdall Web Platform
+</pre>
 
 # Groups privilegies
 <pre>
