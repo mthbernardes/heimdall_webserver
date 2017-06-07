@@ -1,0 +1,4 @@
+requests
+humanize
+uuid
+django==1.11.2

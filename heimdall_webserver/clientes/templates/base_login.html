@@ -1,0 +1,25 @@
+{% load staticfiles %}
+<!DOCTYPE HTML>
+<html lang="pt-br">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width">
+      <link rel="stylesheet" href="{% static 'styles/bootstrap.css' %}">
+      <link rel="stylesheet" href="{% static 'styles/signin.css' %}">
+      <link rel="stylesheet" href="{% static 'styles/hacker.css' %}">
+      <style>
+      body {
+   background-image: url("{% static 'img/asgard.png' %}");
+   background-repeat: no-repeat;
+   background-attachment: fixed;
+}
+</style>
+      <title>Heimdall</title>
+   </head>
+   <body>
+     <div class="container">
+           {% block body %}
+           {% endblock %}
+    </div>
+   </body>
+</html>

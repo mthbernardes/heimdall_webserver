@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block body %}
+<div class="col-lg-12">
+   <h1>Register</h1>
+</div>
+<div class="col-lg-12">
+   <div class="panel panel-success">
+      <div class="panel-body">
+        {%if cliente%}
+         <form class="form-horizontal" action={%url 'editar' cliente.id%} method='POST'>
+        {%else%}
+         <form class="form-horizontal" action={%url 'cadastrar'%} method='POST'>
+        {%endif%}
+         {% csrf_token %}
+         <fieldset>
+           {%if cliente%}
+            <legend>Edit {{cliente.name}}</legend>
+            {%else%}
+            <legend>Create a new client</legend>
+            {%endif%}
+            <div class="form-group">
+               <label for="inputEmail" class="col-lg-2 control-label">Nome</label>
+               <div class="col-lg-10">
+
+                  <input class="form-control" name="name" value="{{cliente.name}}" placeholder="Client Name" type="text">
+               </div>
+            </div>
+            <div class="form-group">
+               <label for="inputEmail" class="col-lg-2 control-label">IP Address</label>
+               <div class="col-lg-10">
+                  <input class="form-control" name="ipaddr" value="{{cliente.ipaddr}}" placeholder="Client IP Address" type="text">
+               </div>
+            </div>
+            <div class="form-group">
+               <label for="inputEmail" class="col-lg-2 control-label">Distro</label>
+               <div class="col-lg-10">
+                  <select class="form-control" value="{{cliente.distro}}" name="distro">
+                     <option value="Debian">Debian</option>
+                     <option value="Ubuntu">Ubuntu</option>
+                     <option value="Suse">Suse</option>
+                     <option value="Centos">Centos</option>
+                     <option value="Oracle Linux">Oracle Linux</option>
+                     <option value="Red Hat">Red Hat</option>
+                     <option value="Fedora">Fedora</option>
+                     <option value="Amazon Linux">Amazon Linux</option>
+                  </select>
+               </div>
+            </div>
+         </fieldset>
+         <button type="submit" class="btn btn-primary">Register</button>
+         </form>
+      </div>
+   </div>
+</div>
+{% endblock %}

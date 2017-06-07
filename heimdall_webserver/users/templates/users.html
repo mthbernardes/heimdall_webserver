@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block body %}
+<div class="col-lg-12">
+   <h1>sys_users</h1>
+</div>
+<div class="col-lg-12">
+   <div class="panel panel-success">
+      <div class="panel-heading">
+         <h3 class="panel-title">{{sysusers.count}} User{{sysusers.count|pluralize}}</h3>
+      </div>
+      <div class="panel-body">
+         <table class="table table-striped table-hover">
+            {% if sysusers.count%}
+            <thead>
+               <tr>
+                  <th>#</th>
+                  <th>username</th>
+                  <th>email</th>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Group</th>
+
+               </tr>
+            </thead>
+            <tbody>
+               {%for sysuser in sysusers%}
+               <tr>
+                  <td>{{sysuser.id}}</td>
+                  <td>{{sysuser.username}}</td>
+                  <td>{{sysuser.email}}</td>
+                  <td>{{sysuser.first_name}}</td>
+                  <td>{{sysuser.last_name}}</td>
+                  <td>{{sysuser.groups.first.name}}</td>
+                  <td>
+                     {%if not sysuser.username == user.username%}
+                     <a href="{%url 'usersDelete' sysuser.id %}" class="pull-right label label-danger">delete</a>
+                     {%endif%}
+                     <a href="{%url 'usersEdit' sysuser.id%}" class="pull-right label label-info">update</a>
+                  </td>
+               </tr>
+               {%endfor%}
+               {%else%}
+               <div class="alert alert-dismissible alert-danger"><strong>No users</strong></div>
+               {% endif %}
+         </table>
+         <a href="{%url 'usersRegister'%}" class="btn btn-primary">Register</a>
+      </div>
+   </div>
+</div>
+
+{% endblock %}

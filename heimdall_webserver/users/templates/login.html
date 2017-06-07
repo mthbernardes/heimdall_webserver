@@ -1,0 +1,32 @@
+{% extends 'base_login.html' %}
+
+Login
+{% block body %}
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+  <h2 align="center">Heimdall</h2>
+  <form method="post">
+    <form class="form-signin" role="form" action="{% url 'login' %}" method="POST">
+        {% csrf_token %}
+
+        <h2 class="form-signin-heading" align="center">Login</h2>
+
+        <input type="text" name="username" class="form-control input-lg" placeholder="Username" required autofocus>
+
+        <input type="password" name="password" class="form-control input-lg" placeholder="Password" required>
+
+
+
+        {% if error %}
+        <br>
+          <div class="alert alert-danger">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            {{error}}
+          </div>
+        {% endif %}
+        <button class="btn btn-lg btn-primary" type="submit" value="Login">Login</button>
+
+  </form>
+</div>
+</div>
+{% endblock %}

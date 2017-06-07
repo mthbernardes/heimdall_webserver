@@ -1,0 +1,40 @@
+{% load staticfiles %}
+<!DOCTYPE HTML>
+<html lang="pt-br">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width">
+      <link rel="shortcut icon" href="{% static 'img/favicon.ico'%}">
+      <link rel="stylesheet" href="{% static 'styles/hacker.css' %}">
+      <title>Heimdall</title>
+      <style>
+      body {
+   background-image: url("{% static 'img/asgard.png' %}");
+   background-repeat: no-repeat;
+   background-attachment: fixed;
+}
+</style>
+      </script>
+
+   </head>
+   <body >
+      <div class="container">
+         <div class="header">
+            <ul class="nav nav-pills pull-right">
+               <li><a href="{% url 'usersView' %}">users</a></li>
+               <li><a href="{% url 'usersPassword' %}">{{user.username}}</a></li>
+               <li><a href="{% url 'clientes'  %}">clients</a></li>
+               <li><a href="{%url 'logout' %}">logout</a></li>
+            </ul>
+            <h3>Heimdall</h3>
+         </div>
+         <div class="row content">
+           {% block body %}
+
+           {% endblock %}
+         </div>
+
+      </div>
+
+   </body>
+</html>
