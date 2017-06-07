@@ -48,6 +48,8 @@ after the upgrade finish, you can see the upgrade response, clicking on view.
 It's done
 </pre>
 
+<blockquote class="imgur-embed-pub" lang="en" data-id="a/nhhJO"><a href="//imgur.com/nhhJO"></a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
+
 # ToDo
 <pre>
 Package upgrade with schedule
