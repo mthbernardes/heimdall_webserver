@@ -1,7 +1,7 @@
 # Heimdall
 It's a tool to manage vulnerables packages in your *nix server, in a centralized way
 
-#How to install
+# How to install
 git clone https://github.com/mthbernardes/heimdall_webserver.git
 cd heimdall_webserver
 chmod +x install.sh
@@ -34,3 +34,6 @@ It's done
 After you have installed the packages on your client, it start to communicate with the server, and send the vulnerable packages, so when a vulnerable package appear, just click in update.
 after the upgrade finish, you can see the upgrade response, clicking on view.
 It's done
+
+
+Thanks to <a href="https://github.com/Brobin">@Brobin</a> for create the <a href="https://github.com/Brobin/hacker-bootstrap">template</a> used
