@@ -48,10 +48,6 @@ after the upgrade finish, you can see the upgrade response, clicking on view.
 It's done
 </pre>
 
-<pre>
-Thanks to <a href="https://github.com/Brobin">@Brobin</a> for create the <a href="https://github.com/Brobin/hacker-bootstrap">template</a> used
-</pre>
-
 # ToDo
 <pre>
 Package upgrade with schedule
@@ -59,3 +55,9 @@ E-mail notifications
 Activity Log
 Vulnerability chat
 </pre>
+
+# Thanks
+<pre>
+Thanks to <a href="https://github.com/Brobin">@Brobin</a> for create the bootstrap<a href="https://github.com/Brobin/hacker-bootstrap">template</a> used.
+</pre>
+
