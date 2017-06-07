@@ -51,6 +51,9 @@ It's done
 # Project prints
 http://imgur.com/a/nhhJO
 
+# Project installation and configuration video
+<iframe src="https://player.vimeo.com/video/220639459" width="640" height="480" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
 # ToDo
 <pre>
 Package upgrade with schedule
