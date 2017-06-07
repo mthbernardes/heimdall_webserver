@@ -1,3 +1,6 @@
+# ATTENTION, this project is on a beta version, there is a lot of bugs and problem, if you want to help the project use this on a lab not in yout real environment.
+# NO, there's no https implemented yet, it will come on the next upgrade
+
 # Heimdall
 It's a tool to manage vulnerables packages in your *nix server, in a centralized way
 
@@ -47,4 +50,12 @@ It's done
 
 <pre>
 Thanks to <a href="https://github.com/Brobin">@Brobin</a> for create the <a href="https://github.com/Brobin/hacker-bootstrap">template</a> used
+</pre>
+
+# ToDo
+<pre>
+Package upgrade with schedule
+E-mail notifications
+Activity Log
+Vulnerability chat
 </pre>
