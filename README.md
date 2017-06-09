@@ -8,6 +8,9 @@ It's a tool to manage vulnerables packages in your *nix servers, in a centralize
 <pre>
 You need to have pyhton pip installed, so check using the command
 which pip
+If you have pip installed just run
+pip install -U pip
+
 If you do not have pip installed, install it using the follow link
 https://pip.pypa.io/en/stable/installing/
 </pre>
