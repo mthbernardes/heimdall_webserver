@@ -4,6 +4,14 @@
 # Heimdall
 It's a tool to manage vulnerables packages in your *nix servers, in a centralized way
 
+# Before all
+<pre>
+You need to have pyhton pip installed, so check using the command
+which pip
+If you do not have pip installed, install it using the follow link
+https://pip.pypa.io/en/stable/installing/
+</pre>
+
 # How to install
 <pre>
 git clone https://github.com/mthbernardes/heimdall_webserver.git
