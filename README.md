@@ -13,6 +13,8 @@ chmod +x install.sh
 python manage.py runserver 0.0.0.0:1337
 The default credentials are 
 heimdall:heimdall (CHANGE THAT)
+url to access
+http://ip:port/login
 </pre>
 
 # How it works
