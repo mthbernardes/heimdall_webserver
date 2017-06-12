@@ -4,6 +4,8 @@ from __future__ import unicode_literals
 import requests
 from django.shortcuts import render,redirect
 from clientes.models import Clientes
+from django.contrib.auth.models import User
+from vulnerabilities.models import Comments
 from vulnerabilities.models import Packages
 from users.utils import group_required
 from django.contrib.auth.decorators import login_required
@@ -24,4 +26,14 @@ def update(request,vulnerability_id):
 @login_required(login_url='login')
 def view(request,vulnerability_id):
     package = Packages.objects.get(id=vulnerability_id)
-    return render(request,'view_vulnerability.html',{'package':package})
+    comments = Comments.objects.filter(package_id=vulnerability_id)
+    return render(request,'view_vulnerability.html',{'package':package,'comments':comments})
+
+@login_required(login_url='login')
+def addComment(request,package_id):
+    package = Packages.objects.get(id=package_id)
+    user = User.objects.get(id=request.user.id)
+    if request.method == 'POST':
+        data = request.POST
+        Comments(package_id=package,user=user,comment=data['comment']).save()
+    return redirect('view',package_id)
