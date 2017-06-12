@@ -3,6 +3,7 @@ from django.contrib import admin
 from users import views
 
 urlpatterns = [
+    url(r'^$', views.userLogin, name='login'),
     url(r'^login/$', views.userLogin, name='login'),
     url(r'^logout/$', views.userLogout, name='logout'),
     url(r'^users$', views.usersView, name='usersView'),

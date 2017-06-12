@@ -15,12 +15,18 @@ from django.contrib.auth.decorators import login_required
 def update(request,vulnerability_id):
     package = Packages.objects.get(id=vulnerability_id)
     client = Clientes.objects.get(id=package.client.id)
-    if package.status == 'vulnerable' or package.status == 'upgrade error':
-        url = 'http://%s/api/v1/update' % client.ipaddr
-        data = {'key':client.api,'packages':[package.package_name]}
-        r = requests.post(url,json=data)
-        package.status = 'waiting update'
-        package.save(update_fields=["status"])
+    url = 'http://%s/api/v1/update' % client.ipaddr
+    try:
+        r = requests.get(url,timeout=2)
+    except:
+        r = None
+    if r:
+        if package.status == 'vulnerable' or package.status == 'upgrade error':
+            print 'Entrou'
+            data = {'key':client.api,'packages':[package.package_name]}
+            r = requests.post(url,json=data)
+            package.status = 'waiting update'
+            package.save(update_fields=["status"])
     return redirect('cliente',client.id)
 
 @login_required(login_url='login')
