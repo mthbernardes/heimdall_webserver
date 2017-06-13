@@ -62,7 +62,7 @@ It's done
 </pre>
 
 # Project prints
-http://imgur.com/a/nhhJO
+https://github.com/mthbernardes/heimdall_webserver/tree/master/prints
 
 # Project installation and configuration video
 https://player.vimeo.com/video/220639459
@@ -77,6 +77,7 @@ Vulnerability chat
 
 # Thanks
 <pre>
-Thanks to <a href="https://github.com/Brobin">@Brobin</a> for create the bootstrap<a href="https://github.com/Brobin/hacker-bootstrap">template</a> used.
+Thanks to <a href="https://github.com/Brobin">@Brobin</a> for create the bootstrap<a href="https://github.com/Brobin/hacker-bootstrap"> template</a> used.
+Thanks to <a href="https://vulners.com">vulners</a> for create the API used on project.
 </pre>
 
