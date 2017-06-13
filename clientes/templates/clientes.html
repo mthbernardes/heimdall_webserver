@@ -19,6 +19,7 @@
                <th>Name</th>
                <th>IP Address/Port</th>
                <th>Distro</th>
+               <th>Status</th>
             </tr>
          </thead>
          <tbody>
@@ -28,6 +29,11 @@
                <td>{{cliente.name}}</td>
                <td>{{cliente.ipaddr}}</td>
                <td>{{cliente.distro}}</td>
+               {%if cliente.update_status%}
+               <td>Online</td>
+               {%else%}
+               <td>Offline</td>
+               {%endif%}
                <td>
                  <a href="{% url 'delete' cliente.id %}" class="pull-right label label-danger">delete</a>
                  <a href="{% url 'editar' cliente.id %}" class="pull-right label label-info">update</a>
