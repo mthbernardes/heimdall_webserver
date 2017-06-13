@@ -6,7 +6,7 @@ from django.shortcuts import render,redirect
 from clientes.models import Clientes
 from django.contrib.auth.models import User
 from vulnerabilities.models import Comments
-from vulnerabilities.models import Packages
+from vulnerabilities.models import Packages,Exploit,CVE
 from users.utils import group_required
 from django.contrib.auth.decorators import login_required
 
@@ -22,7 +22,6 @@ def update(request,vulnerability_id):
         r = None
     if r:
         if package.status == 'vulnerable' or package.status == 'upgrade error':
-            print 'Entrou'
             data = {'key':client.api,'packages':[package.package_name]}
             r = requests.post(url,json=data)
             package.status = 'waiting update'
@@ -33,7 +32,8 @@ def update(request,vulnerability_id):
 def view(request,vulnerability_id):
     package = Packages.objects.get(id=vulnerability_id)
     comments = Comments.objects.filter(package_id=vulnerability_id)
-    return render(request,'view_vulnerability.html',{'package':package,'comments':comments})
+    cve = CVE.objects.filter(package_id=package)
+    return render(request,'view_vulnerability.html',{'package':package,'comments':comments,'cves':cve})
 
 @login_required(login_url='login')
 def addComment(request,package_id):
@@ -43,3 +43,11 @@ def addComment(request,package_id):
         data = request.POST
         Comments(package_id=package,user=user,comment=data['comment']).save()
     return redirect('view',package_id)
+
+
+@login_required(login_url='login')
+@group_required('admin','security')
+def viewExploit(request,cve_id):
+    cve = CVE.objects.get(id=cve_id)
+    exploits = Exploit.objects.filter(cve_id=cve)
+    return render(request,'view_exploit.html',{'exploits':exploits,'cve':cve})

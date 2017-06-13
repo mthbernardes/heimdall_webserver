@@ -6,8 +6,9 @@ from django.utils import timezone
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from clientes.models import Clientes
+from pprint import pprint
 from django.views.decorators.csrf import csrf_exempt
-from vulnerabilities.models import Packages
+from vulnerabilities.models import Packages,Exploit,CVE
 
 @csrf_exempt
 def beat(requests):
@@ -22,14 +23,18 @@ def beat(requests):
 @csrf_exempt
 def vulnerabilities(requests):
     if requests.method == 'POST':
-        data = requests.POST
+        data = json.loads(requests.body)
         client = getCliente(data)
         if client:
             beat(requests)
-            packages = data.getlist('packages')
-            for package in packages:
+            for package in data['packages']:
                 p, created = Packages.objects.get_or_create(package_name=package,client=client)
-                print created
+                for cve in data['packages'][package]:
+                    c, created = CVE.objects.get_or_create(cveid=cve,package_id=p)
+                    if len(data['packages'][package][cve][0]) > 0:
+                        desc,xpl = data['packages'][package][cve]
+                        for i in range(0,len(desc)):
+                            e, created = Exploit.objects.get_or_create(description=desc[i],exploit_url=xpl[i],cve_id=c)
             return HttpResponse(json.dumps({'status':'ok'}))
     return HttpResponse(json.dumps({'response':'not ok'}),content_type="application/json")
 
@@ -48,6 +53,7 @@ def status(requests):
 def getCliente(data):
     try:
         client = Clientes.objects.get(api=data['key'])
-    except:
+    except Exception as e:
+        print e
         client = None
     return client

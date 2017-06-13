@@ -11,6 +11,15 @@ class Packages(models.Model):
     update_response = models.TextField(default='',null=False)
     client = models.ForeignKey(Clientes,related_name='client')
 
+class CVE(models.Model):
+    cveid = models.CharField(max_length=20, null=False)
+    package_id = models.ForeignKey(Packages,related_name='package')
+
+class Exploit(models.Model):
+    description = models.TextField(null=True)
+    exploit_url = models.CharField(max_length=255, null=True)
+    cve_id = models.ForeignKey(CVE,related_name='cve_id')
+
 class Comments(models.Model):
     comment = models.TextField(default='',null=False)
     package_id = models.ForeignKey(Packages,related_name='package_id')
