@@ -14,7 +14,10 @@ class Packages(models.Model):
 class CVE(models.Model):
     cveid = models.CharField(max_length=20, null=False)
     package_id = models.ForeignKey(Packages,related_name='package')
-
+    @property
+    def exploits(self,):
+        return Exploit.objects.filter(cve_id=self)
+        
 class Exploit(models.Model):
     description = models.TextField(null=True)
     exploit_url = models.CharField(max_length=255, null=True)
