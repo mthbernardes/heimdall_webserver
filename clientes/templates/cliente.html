@@ -95,6 +95,7 @@
                      <td>{{package.package_name}}</td>
                      <td>{{package.status}}</td>
                      <td>
+                        <a href="{%url 'update' package.id%}" class="pull-right label label-info">update</a>
                         <a href="{%url 'view' package.id%}" class="pull-right label label-success">view</a>
                      </td>
                   </tr>

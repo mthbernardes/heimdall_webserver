@@ -17,10 +17,12 @@ def update(request,vulnerability_id):
     client = Clientes.objects.get(id=package.client.id)
     url = 'http://%s/api/v1/update' % client.ipaddr
     try:
-        r = requests.get(url,timeout=2)
-    except:
+        r = requests.get('http://%s' % client.ipaddr,timeout=5)
+    except Exception as e:
+        print e
         r = None
-    if r:
+    print r
+    if 'status_code' in dir(r):
         if package.status == 'vulnerable' or package.status == 'upgrade error':
             data = {'key':client.api,'packages':[package.package_name]}
             r = requests.post(url,json=data)
