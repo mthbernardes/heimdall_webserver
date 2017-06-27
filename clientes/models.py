@@ -13,8 +13,9 @@ class Clientes(models.Model):
 
     @property
     def update_status(self,):
-        time = timezone.now() - Clientes.objects.get(id=self.id).lastupdate
-        if time.seconds < 20:
-            return True
+        if Clientes.objects.get(id=self.id).lastupdate:
+            time = timezone.now() - Clientes.objects.get(id=self.id).lastupdate
+            if time.seconds < 20:
+                return True
         else:
             return False
