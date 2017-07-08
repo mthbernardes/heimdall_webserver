@@ -19,7 +19,8 @@ def clientes(request):
 @login_required(login_url='login')
 def cliente(request,cliente_id):
     cliente = Clientes.objects.get(id=cliente_id)
-    packages = getVulnerabilities(cliente_id)
+    packages = None
+    #packages = getVulnerabilities(cliente_id)
     if cliente.lastupdate:
         last_update = getupdate(cliente)
     else:
@@ -57,7 +58,10 @@ def editar(request,cliente_id):
     return render(request,'cadastrar.html',{'cliente':client})
 
 def getVulnerabilities(cliente_id):
-    packages = Packages.objects.filter(client_id=cliente_id).all
+    try:
+        packages = Packages.objects.filter(client_id=cliente_id).all
+    except:
+        packages = ''
     return packages
 
 def getupdate(cliente):
