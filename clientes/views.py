@@ -19,8 +19,7 @@ def clientes(request):
 @login_required(login_url='login')
 def cliente(request,cliente_id):
     cliente = Clientes.objects.get(id=cliente_id)
-    packages = None
-    #packages = getVulnerabilities(cliente_id)
+    packages = getVulnerabilities(cliente_id)
     if cliente.lastupdate:
         last_update = getupdate(cliente)
     else:
